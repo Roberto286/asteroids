@@ -1,3 +1,4 @@
+from enum import show_flag_values
 import pygame
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from logger import log_event, log_state
@@ -5,6 +6,8 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 import sys
+
+from shot import Shot
 
 def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
@@ -22,6 +25,8 @@ def main():
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable) 
     asteroidfield = AsteroidField()
+    shots = pygame.sprite.Group()
+    Shot.containers = (shots, drawable, updatable)
 
     # Game loop
     while True:
